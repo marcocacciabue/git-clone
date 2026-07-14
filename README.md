@@ -1,7 +1,7 @@
 # git-clone
 #### _mass github repo scraper/cloner_
-# Modified version by marcocacciabue to handle private repo with access token 
-# and ssh connection
+####  Modified version by marcocacciabue to handle private repo with access token 
+####  and ssh connection
 
 
 git-clone is simple but powerful shell script to mass download *all* repositories of a user or organization on Github.
