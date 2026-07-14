@@ -31,9 +31,9 @@ echo_r 'Enter user token: '
 read GITTOKEN
 
 REPOLIST=""
-
-REPOLIST+=`curl --silent -H "Authorization: bearer ${GITTOKEN}" "https://api.github.com/search/repositories?q=user:${GITORG}" -q|sort|grep "\"ssh_url\""|awk -F': "' '{print $2}' | sed -e 's/",//g'`
-
+for PAGE in {1..4}; do
+REPOLIST+=`curl --silent -H "Authorization: bearer ${GITTOKEN}" "https://api.github.com/search/repositories?q=user:${GITORG}&per_page=100&page=${PAGE}" -q|sort|grep "\"ssh_url\""|awk -F': "' '{print $2}' | sed -e 's/",//g'`
+done
 
 echo_y "$REPOLIST"
 echo_r "ready to clone all the above repositories of: $GITORG"
